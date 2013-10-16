@@ -1,0 +1,19 @@
+{
+  "meteor": {
+    "git": "https://github.com/meteor/meteor.git",
+    "branch": "master",
+    "commit": "e2fd3fcad31b3a9e2c9f80d16260f9cd606741bd"
+  },
+  "dependencies": {
+    "basePackages": {
+      "iron-router": {}
+    },
+    "packages": {
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "tag": "v0.5.4",
+        "commit": "3e0e22ff85630b7503d0daa1538c6d90abb84020"
+      }
+    }
+  }
+}
