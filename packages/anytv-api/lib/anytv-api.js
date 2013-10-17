@@ -2,6 +2,9 @@
 
 (function(AnyTV){
 
+  // Data storage for the AnyTV API
+  AnyTV._cache = {};
+
   // Namespace extender
   // Example: AnyTV.extend('Foo.Bar.Baz') => AnyTV.Foo.Bar.Baz will exist
   AnyTV.extend = function(parent,namespace){
@@ -29,6 +32,20 @@
       parent = parent[part];
     }
     return parent;
+  }
+
+  //Data store, similar to jQuery.data(). Can be used for common data storage.
+  AnyTV.data = function(key,value){
+
+    // Create a data object on the cache if it does not exist
+    if(!AnyTV._cache.hasOwnProperty('_data')) AnyTV._cache._data = {};
+
+    // Operate only when the key is provided
+    if(typeof key === 'string'){
+      if(value === undefined) return AnyTV._cache._data[key];
+      else AnyTV._cache._data[key] = value;
+    }
+
   }
 
 }(AnyTV = AnyTV || {}));

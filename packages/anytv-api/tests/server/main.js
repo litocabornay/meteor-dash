@@ -33,3 +33,27 @@ Tinytest.add('AnyTV API - extend()', function (test) {
   test.equal(someObject.Foo.Bar.bam(),'bam','Should output bam');
 
 });
+
+Tinytest.add('AnyTV API - data()', function (test) {
+
+  test.isTrue(!!AnyTV.data,'data() should exist');
+
+  test.isUndefined(AnyTV._cache._data,'The data cache should not exist here yet');
+
+  AnyTV.data();
+  test.isTrue(!!AnyTV._cache._data,'The data cache should now exist');
+
+  var sampleString = 'foo';
+  var sampleObject = {'foo':'bar'};  
+
+  test.isUndefined(AnyTV.data('sample'),'Non-existent items should be undefined');
+
+  AnyTV.data('sample',sampleString);
+  test.equal(AnyTV.data('sample'),'foo',"Should be equal to expeced string");
+
+  AnyTV.data('sample',sampleObject);
+  test.equal(AnyTV.data('sample'),sampleObject,"Should be the same object.");
+  test.equal(AnyTV.data('sample').foo,'bar',"Should contain the same value.");
+
+
+});
