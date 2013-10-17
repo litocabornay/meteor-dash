@@ -1,8 +1,8 @@
 {
-  "name": "AnyTV Has Offers Package ",
-  "description": "Has Offers API bridge for AnyTV",
+  "name": "AnyTV API",
+  "description": "AnyTV API",
   "homepage": "https://bitbucket.org/fskreuz/anytv-dashboard/",
   "author": "Joseph Ammil Descalzota",
-  "version": "",
+  "version": "0.1.0",
   "git": ""
 }

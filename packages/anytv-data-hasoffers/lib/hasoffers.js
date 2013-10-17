@@ -1,5 +1,7 @@
+'use strict';
+
 // Protect from the global scope when in a browser
-;(function(){
+(function(){
 
   // NPM dependencies
   if (!Meteor) {
@@ -106,10 +108,7 @@
     }
   }
 
-
-
-  // Export the constructor
-  if (!Meteor) HasOffersAPI = exports = module.exports = constructor; //NodeJS
-  else HasOffersAPI = constructor;  
+  // Extend using the AnyTV API
+  AnyTV.extend('Data').HasOffers = constructor;
 
 }());

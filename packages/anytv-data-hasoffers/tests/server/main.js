@@ -1,11 +1,6 @@
-Tinytest.add('Has Offers - Sample server-only Test', function (test) {
-  
-  test.isFalse(false,'Should be false');
-
-});
-
 Tinytest.add('Has Offers - Existence Test', function (test) {
   
-  test.isNotNull(HasOffers,'Has Offers should be defined');
+  test.isNotNull(AnyTV.Data.HasOffers,'Has Offers should be defined under AnyTV.Data');
+  test.equal(typeof AnyTV.Data.HasOffers,'function','Has Offers should be a function');
 
 });

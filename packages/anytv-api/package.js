@@ -1,24 +1,22 @@
 // Package Description
 Package.describe({
-  summary: "AnyTV Has Offers Package"
+  summary: "AnyTV API"
 });
 
 // Package use body
 Package.on_use(function (api) {
-  
-  //Add other package dependencies
-  api.use([
-    'jquery',
-    'underscore',
-    'anytv-api'
-  ],['client','server']);
 
   //Add package files in the order of dependence (similar to <script>)
   api.add_files([
-    'lib/hasoffers.js'
+    'lib/anytv-api.js'
   ],'server'); // Can be 'server', 'client' , ['client','server']
 
-  // Nothing exported here because the library registers itself
+  //Only expose the My constructor, only export if meteor > 6.5
+  if (typeof api.export !== 'undefined') {
+    api.export([
+      'AnyTV'
+    ],'server'); // Can be 'server', 'client' , ['client','server']
+  }
 });
 
 // Package test body
@@ -26,10 +24,8 @@ Package.on_test(function (api) {
 
   //Add other package dependencies
   api.use([
-    'jquery',
-    'underscore',
     'tinytest',
-    'anytv-data-hasoffers'
+    'anytv-api'
   ],['client','server']);
 
   // Client-server tests
