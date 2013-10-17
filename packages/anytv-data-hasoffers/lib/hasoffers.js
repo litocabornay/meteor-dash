@@ -3,15 +3,6 @@
 // Protect from the global scope when in a browser
 (function(){
 
-  // NPM dependencies
-  if (!Meteor) {
-    // Running as NodeJS
-    // var variableName = require(MODULE_NAME);
-  } else {
-    // Running as Meteor Package
-    // var variableName = Npm.require(MODULE_NAME);
-  }
-
   // Makeshift jQuery.param, until we properly include jQuery
   function objectToQueryString(obj, prefix) {
     var str = [];

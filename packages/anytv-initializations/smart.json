@@ -1,0 +1,8 @@
+{
+  "name": "AnyTV Initializations",
+  "description": "Initialization package for AnyTV, used to set start values before anything else.",
+  "homepage": "https://bitbucket.org/fskreuz/anytv-dashboard/",
+  "author": "Joseph Ammil Descalzota",
+  "version": "",
+  "git": ""
+}
