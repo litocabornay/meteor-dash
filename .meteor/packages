@@ -8,6 +8,6 @@ accounts-base
 accounts-password
 iron-router
 anytv-data-hasoffers
-jquery
 tinytest
 underscore
+http

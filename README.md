@@ -6,6 +6,7 @@ Conversion of multiple services into AnyTV-native services
 
 - It is highly advisable that you have a Linux-based development machine
 - This documentation is created by @fskreuz which, at the time of creation, only had less than 24-hours of experience with Meteor and package development. If there are mistakes made, please file an issue to get it corrected.
+- I think a Wiki should be made for this... soon.
 
 ##Quick start
 
@@ -18,12 +19,11 @@ Conversion of multiple services into AnyTV-native services
 	// Clone the repo
 	git clone https://bitbucket.org/fskreuz/anytv-dashboard.git
 
+	// Update the meteor used
+	meteor update
+
 	// Run meteor
 	meteor
-
-I'm not sure if the project recognizes local packages. If not, then run the following to get them recognized.
-
-    meteor add PACKAGE_NAME
 
 #Workflow
 
@@ -50,7 +50,7 @@ There will be a skeleton package created soon, or a Yeoman generator if time per
 
 The sample `anytv-data-hasoffers` should be self-explanatory and should cover the basics of package creation. You can explore more complex implementations and testing of packages with the built-in `iron-router` package.
 
-Packages don't install themselves, even when in the packages directory. To make them recognized by your installation, do:
+Packages don't install themselves (compared to WordPress plugins). To make them recognized by your installation, do:
 
     meteor add PACKAGE_NAME
 
