@@ -8,7 +8,6 @@ Package.on_use(function (api) {
   
   //Add other package dependencies
   api.use([
-    'jquery',
     'underscore',
     'anytv-api'
   ],['client','server']);
@@ -26,9 +25,9 @@ Package.on_test(function (api) {
 
   //Add other package dependencies
   api.use([
-    'jquery',
     'underscore',
     'tinytest',
+    'anytv-api',
     'anytv-data-hasoffers'
   ],['client','server']);
 
