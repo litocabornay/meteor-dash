@@ -1,33 +1,43 @@
 #Any.tv Dashboard Project
 
-Conversion of multiple services into AnyTV-native services
+Conversion of multiple third-party services into AnyTV-native services
 
 ##Notes:
 
 - It is highly advisable that you have a Linux-based development machine
-- This documentation is created by @fskreuz which, at the time of creation, only had less than 24-hours of experience with Meteor and package development. If there are mistakes made, please file an issue to get it corrected.
+- If there are mistakes made in this README, please file an issue to get it corrected.
 - I think a Wiki should be made for this... soon.
 
 ##Quick start
 
-	// Install meteor (may need root powers and password)
+	// Install ze Meteor
 	curl https://install.meteor.com | /bin/sh
 
-	// Install meteorite
+	// Install ze Meteorite
 	sudo -H npm install -g meteorite
 
-	// Clone the repo
+	// Clone ze Repo
 	git clone https://bitbucket.org/fskreuz/anytv-dashboard.git
 
-	// Update the meteor used
+	// Update ze Meteor
 	meteor update
 
-	// Run meteor
+	// Run ze Meteor
 	meteor
 
-#Workflow
+	// Wait for the end of the world!!!
 
-The typical fork-dev-pull will be used. A `stable`, `beta` and `dev` branch will be created soon.
+##Workflow
+
+The typical fork-dev-pull will be followed. 
+
+That is: 
+
+- Fork the project to your account. 
+- Implement your modules on your forl and commit. 
+- Then do a pull request to the main repo and wait for further instructions.
+
+##Branches
 
 - `stable` - The "clone, run and never be bothered by bugs" branch
 - `beta` - The "10-3-3" branch, usable with bugs.
@@ -35,34 +45,29 @@ The typical fork-dev-pull will be used. A `stable`, `beta` and `dev` branch will
 
 ##Development
 
-Development will be modular in the form of meteor packages (maybe including the API as well). Explore the sample `anytv-data-hasoffers` for the tentative implementation of packages.
+System development will be modular in the form of meteor packages to easily manage dependencies and code visibility (client, server, client-server). If you are already familiar of how to use [CommonJS modules (like NodeJS)](http://nodejs.org/api/modules.html) or [AMD modules (like RequireJS)](http://requirejs.org/), then it should be somewhat similar. If not, try to familiarize yourself with these similar concepts. Also, explore the existing `anytv-*` packages for samples.
 
-The current sample includes:
+A package will include the following basic contents:
 
 - `smart.json` - Package information
 - `package.js` - Package initializations
-- `lib/` - directory for all implementations
-- `tests/` - directory for all unit tests
+- `lib/` - directory for all package code
+- `tests/` - directory for all TinyTest unit tests
 
-There will be a skeleton package created soon, or a Yeoman generator if time permits its creation.
-
-##Creating a package
-
-The sample `anytv-data-hasoffers` should be self-explanatory and should cover the basics of package creation. You can explore more complex implementations and testing of packages with the built-in `iron-router` package.
-
-Packages don't install themselves (compared to WordPress plugins). To make them recognized by your installation, do:
+To add a package to the installation, do:
 
     meteor add PACKAGE_NAME
 
+Don't forget to commit the `.meteor` directory so that package dependencies get reflected on the app.
+
 ##Testing a package
 
-The `tests` directory shall contain all client-server testing code. Subdirectories called `client` and `server` are in place for client-only and server-only tests respectively.
+The `tests` directory shall contain all client-server testing code. Subdirectories called `client` and `server` are in place for client-only and server-only tests respectively. Tests use the [`TinyTest`](https://www.eventedmind.com/posts/meteor-testing-packages-with-tinytest) package that comes with Meteor. You can explore the test runner's code by cloning [Meteor](https://github.com/meteor/meteor) and checking the `packages/tinytest` package.
 
 ##Tips on package creation
 
-- Make it as cross-platform as possible, meaning make it usable in both client and server.
 - Sensitive algorithms and routines (like API calls with API keys) should be constrained only to the server. There should be a `Meteor.call` to call server-code from the client-side.
 
 ##Research
 
-Meteor is highly undocumented. It is advisable that you clone the [Meteor Repository](https://github.com/meteor/meteor) and crawl over the code, especially the ones under the `packages` directory.
+Meteor is highly undocumented. It is advisable that you clone the [Meteor Repository](https://github.com/meteor/meteor) and crawl over the code, especially the ones under the `packages` directory. Meteor also recommends [these resources](http://docs.meteor.com/#resources) as references for creating Meteor apps.
