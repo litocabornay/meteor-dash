@@ -22,6 +22,9 @@ Conversion of multiple third-party services into AnyTV-native services
 	// Update ze Meteor
 	meteor update
 
+	// Update ze Packages
+	mrt install
+
 	// Run ze Meteor
 	meteor
 
