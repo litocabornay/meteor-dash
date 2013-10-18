@@ -1,7 +1,149 @@
-.container {
-  width: 960px;
-  margin: 0 auto;
+.metrouicss {
+  background-image: url('/images/anytv-background.png');
 }
+
+@media (min-width: 1200px) { 
+    .container {
+    width: 1280px;
+    margin: auto auto;
+    }
+}
+
+@font-face { 
+  font-family: MyriadPro-reg; src: url('MyriadPro-Regular.otf'); 
+} 
+
+.metrouicss .nav-bar {
+  line-height: 25pt;
+}
+
+.metrouicss .page-header {
+  padding-top: 10px;
+}
+
+.metrouicss .page .page-header .page-header-content {
+  min-height: 0px;
+  height: 75px;
+}
+
+.metrouicss h2 {
+  font-family: MyriadPro-reg;
+  font-size: 35px;
+  font-weight: normal;
+  color: #5A5A5A;
+}
+
+.first-row {
+  display: inline-block;
+}
+
+.second-row {
+  display: inline-block;
+}
+
+.third-row {
+  display: block;
+}
+
+/*Signup*/
+.metrouicss .tile.signup {
+  background-image: url('/images/signup.png');
+  width: 200px;
+  height: 70px;
+  background-size: 101%;
+  float:right;
+}
+
+/*First Row*/
+.metrouicss .tile.whatisanytv {
+  background-image: url('/images/whatisanytv.png');
+  width: 330px;
+  height: 125px;
+  background-size: 101%;
+}
+
+.metrouicss .tile.howdoesitwork {
+  background-image: url('/images/howdoesitwork.png');
+  width: 330px;
+  height: 125px;
+  background-size: 101%;
+}
+
+.metrouicss .tile.howdoigetpaid {
+  background-image: url('/images/howdoigetpaid.png');
+  width: 100px;
+  height: 125px;
+  background-size: 101%;
+}
+
+.metrouicss .tile.globe {
+  background-image: url('/images/globe.png');
+  width: 100px;
+  height: 125px;
+  background-size: 101%;
+}
+
+/* Second Row */
+.metrouicss .tile.youtubepartner {
+  background-image: url('/images/youtubepartner.png');
+  width: 330px;
+  height: 125px;
+  background-size: 100%;
+}
+
+.metrouicss .tile.generatelink {
+  background-image: url('/images/generatelink.png');
+  width: 330px;
+  height: 125px;
+  background-size: 100%;
+}
+
+.metrouicss .tile.gift {
+  background-image: url('/images/gift.png');
+  width: 100px;
+  height: 125px;
+  background-size: 101%;
+}
+
+.metrouicss .tile.visitusonyoutube {
+  background-image: url('/images/visitusonyoutube.png');
+  width: 100px;
+  height: 125px;
+  background-size: 101%;
+}
+
+/* Third Row */
+.metrouicss .tile.gameoffers {
+  background-image: url('/images/gameoffers.png');
+  width: 550px;
+  height: 289px;
+  background-size: 100%;
+}
+
+.metrouicss .tile.videos1 {
+  background-image: url('/images/videos1.png');
+  width: 330px;
+  height: 139px;
+  background-size: 100%;
+}
+
+.metrouicss .tile.videos2 {
+  background-image: url('/images/videos2.png');
+  width: 330px;
+  height: 139px;
+  background-size: 100%;
+}
+
+.container {
+  width: auto;
+  margin: 0 15%;
+  padding-bottom: 5%;
+}
+
+.metrouicss .page .page-region .page-region-content {
+  padding-bottom: 5px;
+}
+
 .jumbotron {
   padding: 100px;
   font-size: 17px;
