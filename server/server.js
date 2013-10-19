@@ -7,7 +7,7 @@ console.log("Server code speaking");
 if(AnyTV.data('hasOffers')){
 
   // You can immediately fetch and chain
-  var results = AnyTV.data('hasOffers').getStats({
+  var results = AnyTV.data('hasOffers').Report('getStats',{
     fields : ['Stat.clicks','Stat.conversions','Stat.currency','Stat.payout'],
     sort : 'Offer.name',
     groups : ['Offer.name'],
