@@ -18,6 +18,16 @@ Router.map(function() {
 
   // Has Offers
   this.route('hasoffers');
+  this.route('hasoffers', {
+    path: '/hasoffers',
+    template: 'hasoffers'
+  });
 
+  // Youtube
+  this.route('youtube');
+  this.route('youtube', {
+    path: '/youtube',
+    template: 'youtube'
+  });
 });
 
