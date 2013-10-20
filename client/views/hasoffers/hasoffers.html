@@ -41,26 +41,3 @@
     </tbody>
   </table>
 </template>
-
-<template name="youtube">
-  <table class="table table-hover text-center">
-    <thead>
-      <tr>
-        <td>Channel Name</td>
-        <td>Total Views</td>
-        <td>Subscribers</td>
-        <td>Video Count</td>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each list}}
-        <tr class="info">
-          <td>{{title}}</td>
-          <td>{{add_commas views}}</td>
-          <td>{{add_commas subscribers}}</td>
-          <td>{{add_commas videos}}</td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
-</template>

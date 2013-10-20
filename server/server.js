@@ -22,9 +22,13 @@ console.log("Server code speaking");
 
 
 Meteor.startup(function(){
+  
   Games.remove({});
+  
   Gametotals.remove({});
+  
   Videos.remove({});
+
   Meteor.publish("games", function(){
     return Games.find();
   });
@@ -37,6 +41,7 @@ Meteor.startup(function(){
 
   if(AnyTV.data('hasOffers')){
     Meteor.setInterval(function(){
+
       var results = AnyTV.data('hasOffers').Report('getStats',{
         fields : ['Stat.clicks','Stat.conversions','Stat.currency','Stat.payout','Offer.name'],
         sort : 'Offer.name',

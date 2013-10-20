@@ -21,26 +21,30 @@ body {
 // Sign-up button
 
 #signup{
-  display: block;
-  background-color: @signup-box-inner;
-  text-align: center;
-  font-size: 1.5em;
-  padding: 7px;
-  .box-shadow(~"inset 0 0 30px 10px @{signup-box-outer}");
-  .transition(~"box-shadow 0.4s");
+  padding: 5px;
 
-  &:hover{
-    text-decoration: none;
-    .box-shadow(~"inset 0 0 10px @{signup-box-outer}");
-  }
-  > span {
+  a {
     display: block;
-  }
-  .signup-click{
-    color: @signup-text-click;
-  }
-  .signup-free{
-    color: @signup-text-free;
+    background-color: @signup-box-inner;
+    text-align: center;
+    font-size: 1.5em;
+    padding: 7px;
+    .box-shadow(~"inset 0 0 30px 10px @{signup-box-outer}");
+    .transition(~"box-shadow 0.4s");
+
+    &:hover{
+      text-decoration: none;
+      .box-shadow(~"inset 0 0 10px @{signup-box-outer}");
+    }
+    > span {
+      display: block;
+    }
+    .signup-click{
+      color: @signup-text-click;
+    }
+    .signup-free{
+      color: @signup-text-free;
+    }
   }
 }
 
@@ -60,6 +64,7 @@ body {
   color: @tile-font-color;
   font-size: 1.5em;
   padding: 5px;
+  overflow: hidden;
 
   > * {
     position: absolute;
@@ -67,6 +72,7 @@ body {
     width: 100%;
     height: 100%;
     background: #999;
+    .box-sizing(border-box);
 
     > * {
       display: table-cell;

@@ -5,7 +5,3 @@ Template.hasoffers.list = function(){
 Template.hasoffers.totals = function(){
 	return Gametotals.find();
 }
-
-Template.youtube.list = function(){
-	return Videos.find({}, {sort:{views:-1}});
-}

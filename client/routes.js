@@ -24,7 +24,6 @@ Router.map(function() {
   });
 
   // Youtube
-
   this.route('youtube');
   this.route('youtube', {
     path: '/youtube',

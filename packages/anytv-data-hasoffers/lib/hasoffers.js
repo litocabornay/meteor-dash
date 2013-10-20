@@ -39,7 +39,7 @@
 
   var methods = {
     Authentication : {
-      findUserByCredentials : function(){
+      findUserByCredentials : function(userParams){
 
         var METHOD_DEFAULTS = {
           email : '',
@@ -85,6 +85,18 @@
 
         return result.data.response;
 
+      }
+    },
+    AffiliateUser : {
+      findById : function(userParams){
+
+        var METHOD_DEFAULTS = {};
+        var params = _.extend(METHOD_DEFAULTS, userParams, this._globalParams);
+        var result = HTTP.get(this._url,{
+          query : objectToQueryString(params)
+        });
+
+        return result.data.response;
       }
     }
   };
