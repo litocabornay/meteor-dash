@@ -1,13 +1,116 @@
-.metrouicss {
-  background-image: url('/images/anytv-background.png');
+@import "colors";
+@import "lesshat.less";
+
+body {
+  // Full-screen, non-resizable background
+  background: url('/images/anytv-background.png') no-repeat center center fixed; 
+  .background-size(cover);
 }
 
+// Navigation bar
+
+#anytv-navbar{
+  border: 0;
+  border-radius: 0;
+
+  .container{
+    padding-bottom: 0;
+  }
+}
+
+// Sign-up button
+
+#signup{
+  display: block;
+  background-color: @signup-box-inner;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 7px;
+  .box-shadow(~"inset 0 0 30px 10px @{signup-box-outer}");
+  .transition(~"box-shadow 0.4s");
+
+  &:hover{
+    text-decoration: none;
+    .box-shadow(~"inset 0 0 10px @{signup-box-outer}");
+  }
+  > span {
+    display: block;
+  }
+  .signup-click{
+    color: @signup-text-click;
+  }
+  .signup-free{
+    color: @signup-text-free;
+  }
+}
+
+// Tag line
+
+#tagline{
+  text-align: center;
+  color: @tagline-color;
+}
+
+
+// Tiles
+
+.tile{
+  position: relative;
+  height: 150px;
+  color: @tile-font-color;
+  font-size: 1.5em;
+  padding: 5px;
+
+  > * {
+    position: absolute;
+    display: table;
+    width: 100%;
+    height: 100%;
+    background: #999;
+
+    > * {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      padding: 10px;
+
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 @media (min-width: 1200px) { 
     .container {
     width: 1280px;
     margin: auto auto;
     }
-}
+}*/
+
 
 @font-face { 
   font-family: MyriadPro-reg; src: url('MyriadPro-Regular.otf'); 

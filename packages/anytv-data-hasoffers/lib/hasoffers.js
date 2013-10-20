@@ -36,68 +36,74 @@
   };                                  //Meteor, browser global
 
   // Proceed defining methods / properties as usual.
-  constructor.prototype = {
-    constructor : constructor,
-    findUserByCredentials : function(userParams){
 
-      var METHOD_DEFAULTS = {
-        email : '',
-        password : '',
-        type : ''        
+  var methods = {
+    Authentication : {
+      findUserByCredentials : function(){
+
+        var METHOD_DEFAULTS = {
+          email : '',
+          password : '',
+          type : ''        
+        };
+
+        var params = _.extend(METHOD_DEFAULTS, userParams, this._globalParams);
+
+        var result = HTTP.post(this._url,{
+          params : params
+        });
+
+        return result.data.response;
+
       }
+    },
+    Report :{
+      getStats : function(userParams){
 
-      var METHOD_CONSTANTS = {
-        Method : 'findUserByCredentials',
-        Target : 'Authentication'
+        var METHOD_DEFAULTS = {};
+
+        var params = _.extend(METHOD_DEFAULTS, userParams, this._globalParams);
+
+        // Manually generating the query string since Meteor's param sucks in object->QS conversion
+        var result = HTTP.get(this._url,{
+          query : objectToQueryString(params)
+        });
+
+        return result.data.response;
+
+      },
+      getReferrals : function(userParams){
+
+        var METHOD_DEFAULTS = {};
+
+        var params = _.extend(METHOD_DEFAULTS, userParams, this._globalParams);
+
+        // Manually generating the query string since Meteor's param sucks in object->QS conversion
+        var result = HTTP.get(this._url,{
+          query : objectToQueryString(params)
+        });
+
+        return result.data.response;
+
       }
-
-      var params = _.extend(METHOD_DEFAULTS, userParams, this._globalParams, METHOD_CONSTANTS);
-
-      var result = HTTP.post(this._url,{
-        params : params
-      });
-
-      return result.data.response;
-    },
-    getStats : function(userParams){
-
-      var METHOD_DEFAULTS = {};
-      
-      var METHOD_CONSTANTS = {
-        Method : 'getStats',
-        Target : 'Report'
-      };
-
-      var params = _.extend(METHOD_DEFAULTS, userParams, this._globalParams, METHOD_CONSTANTS);
-
-      // Manually generating the query string since Meteor's param sucks in object->QS conversion
-      var result = HTTP.get(this._url,{
-        query : objectToQueryString(params)
-      });
-
-      return result.data.response;
-
-    },
-    getReferrals : function(userParams){
-
-      var METHOD_DEFAULTS = {};
-      
-      var METHOD_CONSTANTS = {
-        Method : 'getReferrals',
-        Target : 'Report'
-      };
-
-      var params = _.extend(METHOD_DEFAULTS, userParams, this._globalParams, METHOD_CONSTANTS);
-
-      // Manually generating the query string since Meteor's param sucks in object->QS conversion
-      var result = HTTP.get(this._url,{
-        query : objectToQueryString(params)
-      });
-
-      return result.data.response;
-
     }
-  }
+  };
+
+  // Create a function for each target on the prototype
+  // which maps the method to the methods list
+  Object.keys(methods).forEach(function(target){
+    constructor.prototype[target] = function(method,params){
+      //Reject invalid args
+      if(typeof method != 'string' || (typeof params != 'object' && params && !(params instanceof Array))) return;
+      
+      //Inject method-specific details
+      params.Target = target;
+      params.Method = method;
+      
+      //run the method
+      return methods[target][method].call(this,params);
+    }
+  });
 
   // Extend using the AnyTV API
   AnyTV.extend('Data').HasOffers = constructor;
