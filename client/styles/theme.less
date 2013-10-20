@@ -7,15 +7,53 @@ body {
   .background-size(cover);
 }
 
+@font-face { 
+  font-family: MyriadPro-reg; src: url('MyriadPro-Regular.otf'); 
+} 
+
 // Navigation bar
 
 #anytv-navbar{
   border: 0;
   border-radius: 0;
-
   .container{
     padding-bottom: 0;
   }
+  a {
+    line-height: 30px;
+    margin-right: 10px;
+  }
+  li:last-child {
+  margin-right: 20px;
+  }
+  .img-anytv-menu {
+  height: 30px;
+  }
+}
+
+#icona a {
+  background: url("/images/anyTV.png") no-repeat 0% 50%;
+  padding-left: 20px;
+}
+
+#iconearth a {
+  background: url("/images/earth.png") no-repeat 0% 50%;
+  padding-left: 20px;
+}
+
+#iconcommu a {
+  background: url("/images/communityTM.png") no-repeat 0% 50%;
+  padding-left: 20px;
+}
+
+#icondash a {
+  background: url("/images/dashboardTM.png") no-repeat 0% 50%;
+  padding-left: 20px;
+}
+
+#iconmmo a {
+  background: url("/images/mmoTM.png") no-repeat 0% 50%;
+  padding-left: 20px;
 }
 
 // Sign-up button
@@ -49,6 +87,9 @@ body {
 #tagline{
   text-align: center;
   color: @tagline-color;
+  font-family: MyriadPro-reg;
+  margin: .30em 0;
+  font-size: 32px;
 }
 
 
@@ -59,7 +100,7 @@ body {
   height: 150px;
   color: @tile-font-color;
   font-size: 1.5em;
-  padding: 5px;
+  padding: 0px;
 
   > * {
     position: absolute;
@@ -77,6 +118,134 @@ body {
     }
   }
 }
+
+#whatisanytv {
+  background-color: @tile-whatisanytv;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#howdoesitwork {
+  background-color: @tile-howdoesitwork;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#howdoigetpaid {
+  background-color: @tile-howdoigetpaid;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#globe {
+  background: url("/images/globe.png") no-repeat center center;
+  background-size: 110%;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#youtubepartner {
+  background-color: @tile-youtubepartner;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#generatelink {
+  background-color: @tile-generatelink;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#gift {
+  background: url("/images/gift.png") no-repeat center center;
+  background-size: 110%;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#visitusonyoutube {
+  background: url("/images/visitusonyoutube.png") no-repeat center center;
+  background-size: 110%;
+  text-decoration: none;
+  color: #ffffff;  
+}
+
+#gameoffers {
+  background: url("/images/gameoffers.png") no-repeat center center;
+  background-size: 101%;
+  text-decoration: none;
+  color: #ffffff; 
+}
+
+#videodashboard {  
+  background-color: @tile-videodashboard;
+  text-decoration: none;
+  color: #ffffff;
+}
+#paidgrowwithus {  
+  background-color: @tile-paidgrowwithus;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#dashboard2 {
+  background: url("/images/dashboard2.png") no-repeat center center;
+  background-size: 85% 85%;
+  text-decoration: none;
+  color: #ffffff; 
+}
+
+#featured {
+  background: url("/images/featured.png") no-repeat center center;
+  background-size: 85% 85%;
+  text-decoration: none;
+  color: #ffffff; 
+}
+
+#gettingpaid{
+  background: url("/images/gettingpaid.png") no-repeat center center;
+  background-size: 85% 85%;
+  text-decoration: none;
+  color: #ffffff; 
+}
+
+#growwithus {
+  background: url("/images/growwithus.png") no-repeat center center;
+  background-size: 85% 85%;
+  text-decoration: none;
+  color: #ffffff; 
+}
+
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.metrouicss p {
+  margin: 0px;
+  font-size: 22px;
+  line-height: normal;
+  font-weight: 400;
+}
+
+.metrouicss .tile.half {
+  width: 102px;
+}
+
+.metrouicss .tile.game-vertical {
+  height: 291px;
+}
+
+.metrouicss .tile.game-horizontal {
+  width: 560px;
+}
+
+.metrouicss .tile.video {
+  height: 140px;
+  width: 137px;
+}
+
+
 
 
 
@@ -110,11 +279,6 @@ body {
     margin: auto auto;
     }
 }*/
-
-
-@font-face { 
-  font-family: MyriadPro-reg; src: url('MyriadPro-Regular.otf'); 
-} 
 
 .metrouicss .nav-bar {
   line-height: 25pt;
