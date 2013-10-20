@@ -8,6 +8,10 @@
     NetworkToken : 'NETjE4MoLg7NarETCDruHecVmgLHbN',
     NetworkId : 'mmotm'
   }));
-  
+
+  AnyTV.data('YouTube', new AnyTV.Data.YouTube('https://www.googleapis.com/youtube/v3/channels',{
+    key : 'AIzaSyDL6F2UDnezIht4VT-nnKpD_vZSu1ujEyY'
+  }));
+
   console.log('Server initialized');
 }());

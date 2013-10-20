@@ -1,0 +1,66 @@
+<template name="hasoffers">
+  <table class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th class="text-center">Total Clicks</th>
+        <th class="text-center">Total Conversions</th>
+        <th class="text-center" colspan="2">Total Payout</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each totals}}
+      <tr>
+        <td class="text-center">{{add_commas clicks}}</td>
+        <td class="text-center">{{add_commas conversions}}</td>
+        <td class="text-right">{{add_commas payout}}</td>
+        <td class="text-left">{{currency}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <table class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th class="text-center">Game</th>
+        <th class="text-center">Clicks</th>
+        <th class="text-center">Conversions</th>
+        <th class="text-center" colspan="2">Payout</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each list}}
+      <tr>
+        <td class="text-center">{{add_commas name}}</td>
+        <td class="text-center">{{add_commas clicks}}</td>
+        <td class="text-center">{{add_commas conversions}}</td>
+        <td class="text-right">{{add_commas payout}}</td>
+        <td class="text-left">{{currency}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="youtube">
+  <table class="table table-hover text-center">
+    <thead>
+      <tr>
+        <td>Channel Name</td>
+        <td>Total Views</td>
+        <td>Subscribers</td>
+        <td>Video Count</td>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each list}}
+        <tr class="info">
+          <td>{{title}}</td>
+          <td>{{add_commas views}}</td>
+          <td>{{add_commas subscribers}}</td>
+          <td>{{add_commas videos}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>
