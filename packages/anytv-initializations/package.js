@@ -9,7 +9,8 @@ Package.on_use(function (api) {
   // Server-side initializations
   api.use([
     'anytv-api',
-    'anytv-data-hasoffers'
+    'anytv-data-hasoffers',
+    'anytv-data-youtube'
   ],'server');
 
   api.add_files([
