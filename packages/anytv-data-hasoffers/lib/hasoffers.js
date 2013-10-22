@@ -46,9 +46,7 @@
           password : '',
           type : ''        
         };
-
         var params = _.extend(METHOD_DEFAULTS, userParams, this._globalParams);
-
         var result = HTTP.post(this._url,{
           params : params
         });
@@ -61,10 +59,7 @@
       getStats : function(userParams){
 
         var METHOD_DEFAULTS = {};
-
         var params = _.extend(METHOD_DEFAULTS, userParams, this._globalParams);
-
-        // Manually generating the query string since Meteor's param sucks in object->QS conversion
         var result = HTTP.get(this._url,{
           query : objectToQueryString(params)
         });
@@ -75,10 +70,7 @@
       getReferrals : function(userParams){
 
         var METHOD_DEFAULTS = {};
-
         var params = _.extend(METHOD_DEFAULTS, userParams, this._globalParams);
-
-        // Manually generating the query string since Meteor's param sucks in object->QS conversion
         var result = HTTP.get(this._url,{
           query : objectToQueryString(params)
         });
@@ -98,6 +90,19 @@
 
         return result.data.response;
       }
+    },
+    Offer : {
+      findAll : function(userParams) {
+
+        var METHOD_DEFAULTS = {};
+        var params = _.extend(METHOD_DEFAULTS, userParams, this._globalParams);
+        var result = HTTP.get(this._url,{
+          query : objectToQueryString(params)
+        });
+
+        return result.data.response;
+
+      }
     }
   };
 
@@ -105,9 +110,13 @@
   // which maps the method to the methods list
   Object.keys(methods).forEach(function(target){
     constructor.prototype[target] = function(method,params){
+
+      // Use params or default to an empty object
+      params = params || {};
+
       //Reject invalid args
-      if(typeof method != 'string' || (typeof params != 'object' && params && !(params instanceof Array))) return;
-      
+      if(typeof method !== 'string' || !(typeof params === 'object' && params && !(params instanceof Array))) return;
+    
       //Inject method-specific details
       params.Target = target;
       params.Method = method;

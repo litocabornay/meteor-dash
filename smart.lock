@@ -7,7 +7,11 @@
   "dependencies": {
     "basePackages": {
       "iron-router": {},
-      "bootstrap-3": {}
+      "bootstrap-3": {},
+      "meteor-metro-ui": {
+        "git": "https://github.com/gogromat/meteor-metro-ui.git",
+        "branch": "master"
+      }
     },
     "packages": {
       "iron-router": {
@@ -19,6 +23,11 @@
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
         "tag": "v0.3.5",
         "commit": "47996f67f3987c9f82117394effcbe1586a4fe29"
+      },
+      "meteor-metro-ui": {
+        "git": "https://github.com/gogromat/meteor-metro-ui.git",
+        "branch": "master",
+        "commit": "23e653164fd989203a0f5f30d281f6fe98217dd9"
       }
     }
   }

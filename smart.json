@@ -5,6 +5,9 @@
   },
   "packages": {
     "iron-router": {},
-    "bootstrap-3": {}
+    "bootstrap-3": {},
+    "meteor-metro-ui" : {
+    	"git" : "https://github.com/gogromat/meteor-metro-ui.git"
+    }
   }
 }
