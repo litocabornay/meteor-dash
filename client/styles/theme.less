@@ -18,6 +18,8 @@ body {
   border-radius: 0;
   .container{
     padding-bottom: 0;
+    width: auto;
+    margin: 0 auto;
   }
   a {
     line-height: 30px;
@@ -56,10 +58,32 @@ body {
   padding-left: 20px;
 }
 
+@media (min-width: 768px) {
+  #anytv-navbar .container {
+    width: 900px !important;
+  }
+}
+
+//container
+
+.container {
+  width: 900px;
+  margin: 0 auto;
+  padding-bottom: 5%;
+  max-width: none;
+}
+
+  .container.main {
+  padding-top: 75px;
+}
+
 // Sign-up button
 
 #signup{
   padding: 5px;
+  position: relative;
+  width: 26%;
+  left: 53px;
 
   a {
     display: block;
@@ -92,8 +116,8 @@ body {
   text-align: center;
   color: @tagline-color;
   font-family: MyriadPro-reg;
-  margin: .30em 0;
-  font-size: 32px;
+  margin: .20em 0;
+  font-size: 34px;
 }
 
 
@@ -111,7 +135,6 @@ body {
     display: table;
     width: 100%;
     height: 100%;
-    background: #999;
     .box-sizing(border-box);
 
     > * {
@@ -182,17 +205,6 @@ body {
   color: #ffffff; 
 }
 
-#videodashboard {  
-  background-color: @tile-videodashboard;
-  text-decoration: none;
-  color: #ffffff;
-}
-#paidgrowwithus {  
-  background-color: @tile-paidgrowwithus;
-  text-decoration: none;
-  color: #ffffff;
-}
-
 #dashboard2 {
   background: url("/images/dashboard2.png") no-repeat center center;
   background-size: 85% 85%;
@@ -233,8 +245,14 @@ body {
   font-weight: 400;
 }
 
+.metrouicss .tile.double {
+  width: 310px !important;
+  height: 150px !important;
+}
+
 .metrouicss .tile.half {
-  width: 102px;
+  width: 102px !important;
+  height: 150px !important;
 }
 
 .metrouicss .tile.game-vertical {
@@ -245,9 +263,32 @@ body {
   width: 560px;
 }
 
-.metrouicss .tile.video {
+#video1, #video2 {
   height: 140px;
-  width: 137px;
+  width: 147px;
+  margin-right: -10px;
+  box-shadow: none;
+  background-color: @tile-videodashboard;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#video2, #grow {
+  margin-right: 10px;
+}
+
+#video3, #grow {
+  height: 140px;
+  width: 147px;
+  margin-right: -10px;
+  box-shadow: none;
+  background-color: @tile-paidgrowwithus;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.metrouicss .tile.twotile:hover {
+  outline: none;
 }
 
 
@@ -413,12 +454,6 @@ body {
   width: 330px;
   height: 139px;
   background-size: 100%;
-}
-
-.container {
-  width: auto;
-  margin: 0 15%;
-  padding-bottom: 5%;
 }
 
 .metrouicss .page .page-region .page-region-content {
