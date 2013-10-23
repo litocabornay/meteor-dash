@@ -1,10 +1,9 @@
-Template.hasoffers.list = function(){
+Template.hasoffers.Games = function(){
   return Games.find({},{
-    sort: {name:1}
-    //sort: {clicks:-1,name:-1}
+    sort: {'Stat.clicks':-1,'Offer.name':-1}
   });
 }
 
-Template.hasoffers.totals = function(){
-  return Gametotals.find();
+Template.hasoffers.GameTotals = function(){
+  return GameTotals.find();
 }

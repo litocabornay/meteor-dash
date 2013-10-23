@@ -10,12 +10,12 @@ Package.on_use(function (api) {
   api.use([
     'underscore',
     'anytv-api'
-  ],['client','server']);
+  ],'server');
 
   //Add package files in the order of dependence (similar to <script>)
   api.add_files([
     'lib/hasoffers.js'
-  ],'server'); // Can be 'server', 'client' , ['client','server']
+  ],'server');
 
   // Nothing exported here because the library registers itself
 });

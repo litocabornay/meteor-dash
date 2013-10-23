@@ -9,13 +9,13 @@ Package.on_use(function (api) {
   //Add package files in the order of dependence (similar to <script>)
   api.add_files([
     'lib/anytv-api.js'
-  ],'server'); // Can be 'server', 'client' , ['client','server']
+  ],'server');
 
   //Only expose the My constructor, only export if meteor > 6.5
   if (typeof api.export !== 'undefined') {
     api.export([
       'AnyTV'
-    ],'server'); // Can be 'server', 'client' , ['client','server']
+    ],'server');
   }
 });
 
