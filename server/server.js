@@ -9,8 +9,8 @@ Meteor.startup(function(){
 
     // Wipe data
     // TODO: Remove during production to avoid collection wipe
-    Games.remove({});
-    GameTotals.remove({});
+    // Games.remove({});
+    // GameTotals.remove({});
 
     // Publish the collections
     Meteor.publish("games", function(){return Games.find();});
@@ -20,10 +20,11 @@ Meteor.startup(function(){
     if(!AnyTV.Data.HasOffers || !(mmotm = AnyTV.Data.HasOffers.getInstance('mmotm'))) return;
 
     // Async, timed loop so we don't block the other requests
-    (function looper(){
-      console.log('Fetching Offers');
+    (function looper(i){
+      console.log('Fetching Offers',i);
 
-      // Request for data
+      // Asynchronous API call
+      // This means the code after the entire looper block can run while waiting for the request
       mmotm.Report.getStats({
         fields : ['Stat.clicks','Stat.conversions','Stat.payout','Stat.currency','Offer.name'],
         sort : 'Offer.name',
@@ -32,26 +33,31 @@ Meteor.startup(function(){
         limit : 1000000
       },function(error,requestDetails){
 
-        // Schedule another rerun in a few seconds
-        Meteor.setTimeout(looper,5000);
+        // Schedule another request ASAP. This does not fire immediately.
+        // The runtime will run looper again when available.
+        // TODO: Find a way to use setImmediate() in meteor instead. Much more optimal.
+        Meteor.setTimeout(function(){
+          looper(i+1);
+        },10000);
 
         // If data is no good, return
         var results = requestDetails.data.response;
         if(!~results.status) return;
 
         // If data is good, then proceed
-        console.log('Has Offers game data received');
+        console.log('Has Offers game data received',i);
 
         // Update totals
-        // TODO: Convert to async
-        console.log('Parsing game totals');
+        console.log('Parsing game totals',i);
         // Inject foo as an id so we can upsert the object instead
         results.data.totals.Stat.foo = 'bar';
+        // Update or insert when not existing
+        // TODO: Convert to async
         GameTotals.upsert({foo : 'bar'},results.data.totals.Stat);
 
         // Update game data
+        console.log('Parsing game offers',i);
         // TODO: convert to async
-        console.log('Parsing game offers');
         results.data.data.forEach(function(data,index,objects){
 
           // Deym Has offers returns numbers as strings. Not very scalable.
@@ -59,20 +65,21 @@ Meteor.startup(function(){
           data.Stat.conversions = parseInt(data.Stat.conversions);
           data.Stat.payout = parseInt(data.Stat.payout);
 
+          // Update or insert when not available
           Games.upsert({'Offer.id' : data.Offer.id},data);
         });
 
 
       });
 
-    }());
-  }());
+    }(1));
+  });
 
 
   // YouTube block
   (function(){
 
-    Videos.remove({});
+    //Videos.remove({});
     Meteor.publish("videos", function(){
       return Videos.find();
     })
@@ -175,7 +182,7 @@ Meteor.startup(function(){
         }
       }, 2000);  
     }
-  }());
+  });
 
   
 });
