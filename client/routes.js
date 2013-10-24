@@ -16,10 +16,8 @@ Router.map(function() {
     template: 'home'
   });
 
-  // Has Offers
+  this.route('register')
   this.route('hasoffers');
-
-  // Youtube
   this.route('youtube');
   
 });

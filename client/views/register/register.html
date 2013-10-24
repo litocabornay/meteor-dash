@@ -1,0 +1,36 @@
+<template name="register">
+
+  <div id="anytv-content" class="container">
+
+    <h1>Registration</h1>
+    
+    <form id="registration" method="post" action="/register">
+
+      <div class="input-control text span5">
+        <input type="text" name="username" placeholder="Username" required="required" />    
+      </div>
+
+      <div class="input-control text span5">
+        <input type="password" name="password" placeholder="Password" required="required" />
+      </div>
+
+      <div class="input-control text span5">
+        <input type="email" name="email" placeholder="Email" required="required" />
+      </div>
+
+      <div class="span5">
+        <label class="input-control checkbox">
+          <input type="checkbox" name="agree" required="required" />
+          <span class="helper">I Agree to the <a href="#">Terms and Conditions</a> of this website.</span>
+        </label>
+      </div>
+
+      <div>
+        <input type="submit" name="register" value="Register"/>
+      </div>
+
+    </div>
+
+  </div>
+
+</template>
