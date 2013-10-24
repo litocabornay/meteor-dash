@@ -20,10 +20,11 @@ Meteor.startup(function(){
     if(!AnyTV.Data.HasOffers || !(mmotm = AnyTV.Data.HasOffers.getInstance('mmotm'))) return;
 
     // Async, timed loop so we don't block the other requests
-    (function looper(){
-      console.log('Fetching Offers');
+    (function looper(i){
+      console.log('[',i,'] Fetching Offers');
 
-      // Request for data
+      // Asynchronous API call
+      // This means the code after the entire looper block can run while waiting for the request
       mmotm.Report.getStats({
         fields : ['Stat.clicks','Stat.conversions','Stat.payout','Stat.currency','Offer.name'],
         sort : 'Offer.name',
@@ -32,47 +33,72 @@ Meteor.startup(function(){
         limit : 1000000
       },function(error,requestDetails){
 
-        // Schedule another rerun in a few seconds
-        Meteor.setTimeout(looper,5000);
+        // Schedule another request when available. That way, the request happens
+        // while we are doing something else. Parallel at its best!
+        // TODO: Find a way to use setImmediate() in meteor instead. Much more optimal.
+        Meteor.setTimeout(function(){
+          looper(i+1);
+        },0);
+
 
         // If data is no good, return
         var results = requestDetails.data.response;
         if(!~results.status) return;
 
         // If data is good, then proceed
-        console.log('Has Offers game data received');
+        console.log('[',i,'] Has Offers game data received');
 
-        // Update totals
-        // TODO: Convert to async
-        console.log('Parsing game totals');
-        // Inject foo as an id so we can upsert the object instead
+        // NOTE: There will be 100% CPU usage on first load. When everything
+        // is loaded, updates happen *per change only*. This reduces CPU load
+        // by 25%, according to my CPU monitor
+
+        // Update totals only when the totals have changed to avoid client update
+        console.log('[',i,'] Parsing game totals');
         results.data.totals.Stat.foo = 'bar';
-        GameTotals.upsert({foo : 'bar'},results.data.totals.Stat);
+        if(!GameTotals.find(results.data.totals.Stat).count()){
+          console.log('[',i,'] Updated Game Totals');
+          GameTotals.upsert({foo : 'bar'},results.data.totals.Stat,function(){
+            // TODO: Think of something to do when the callback happens, like an error check
+          });
+        }
 
-        // Update game data
-        // TODO: convert to async
-        console.log('Parsing game offers');
-        results.data.data.forEach(function(data,index,objects){
+        // Update game data only when the game data has changed
+        console.log('[',i,'] Parsing game offers');
+        (function gamesUpserter(data,index,objects){
+          // Async recursion, so that the entire looping of the data
+          // does not block other routines.
+
 
           // Deym Has offers returns numbers as strings. Not very scalable.
           data.Stat.clicks = parseInt(data.Stat.clicks);
           data.Stat.conversions = parseInt(data.Stat.conversions);
           data.Stat.payout = parseInt(data.Stat.payout);
 
-          Games.upsert({'Offer.id' : data.Offer.id},data);
-        });
+          if(!Games.find(data).count()){
+            console.log('[',i,'] Updated Game Offer: ', data.Offer.name);
 
+            Games.upsert({'Offer.id' : data.Offer.id},data,function(){
+              // TODO: Think of something to do when the callback happens, like an error check
+            });
+          }
+
+          // Queue an immediate call for the next upsert
+          Meteor.setTimeout(function(){
+            if(++index >= objects.length) return;
+            gamesUpserter(objects[index],index,objects)
+          },0);
+        }(results.data.data[0],0,results.data.data));
 
       });
 
-    }());
+    }(1));
   }());
 
 
   // YouTube block
   (function(){
 
-    Videos.remove({});
+    //Videos.remove({});
     Meteor.publish("videos", function(){
       return Videos.find();
     })
@@ -175,7 +201,7 @@ Meteor.startup(function(){
         }
       }, 2000);  
     }
-  }());
+  });
 
   
 });
