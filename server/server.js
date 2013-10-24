@@ -9,8 +9,8 @@ Meteor.startup(function(){
 
     // Wipe data
     // TODO: Remove during production to avoid collection wipe
-    Games.remove({});
-    GameTotals.remove({});
+    // Games.remove({});
+    // GameTotals.remove({});
 
     // Publish the collections
     Meteor.publish("games", function(){return Games.find();});
@@ -37,7 +37,7 @@ Meteor.startup(function(){
         // while we are doing something else. Parallel at its best!
         // TODO: Find a way to use setImmediate() in meteor instead. Much more optimal.
         Meteor.setTimeout(function(){
-          looper(i+1);
+          //looper(i+1);
         },0);
 
 
@@ -201,7 +201,7 @@ Meteor.startup(function(){
         }
       }, 2000);  
     }
-  });
+  }());
 
   
 });

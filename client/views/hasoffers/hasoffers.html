@@ -1,74 +1,53 @@
 <template name="hasoffers">
 
-  <div>
-  <div class="container">
+  <div id="anytv-content" class="container">
 
-    <div class="row">
-      <div class="col-sm-12">
+    <h1>Game Totals</h1>
+    
+    <table class="striped bordered hovered">
+      <thead>
+        <tr>
+          <th class="text-center">Total Clicks</th>
+          <th class="text-center">Total Conversions</th>
+          <th class="text-center" colspan="2">Total Payout</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each GameTotals}}
+        <tr>
+          <td class="text-center">{{add_commas clicks}}</td>
+          <td class="text-center">{{add_commas conversions}}</td>
+          <td class="text-right">{{add_commas payout}}</td>
+          <td class="text-left">{{currency}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
 
-        <h1>Game Totals</h1>
-        
-        <div id="hasoffers-game-totals" class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th class="text-center">Total Clicks</th>
-                <th class="text-center">Total Conversions</th>
-                <th class="text-center" colspan="2">Total Payout</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each GameTotals}}
-              <tr>
-                <td class="text-center">{{add_commas clicks}}</td>
-                <td class="text-center">{{add_commas conversions}}</td>
-                <td class="text-right">{{add_commas payout}}</td>
-                <td class="text-left">{{currency}}</td>
-              </tr>
-              {{/each}}
-            </tbody>
-          </table>
-        </div>
+    <h1>Games</h1>
 
-      </div>
-    </div>
+    <table class="striped bordered hovered">
+      <thead>
+        <tr>
+          <th class="text-center">Game</th>
+          <th class="text-center">Clicks</th>
+          <th class="text-center">Conversions</th>
+          <th class="text-center" colspan="2">Payout</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each Games}}
+        <tr>
+          <td class="text-center">{{Offer.name}}</td>
+          <td class="text-center">{{add_commas Stat.clicks}}</td>
+          <td class="text-center">{{add_commas Stat.conversions}}</td>
+          <td class="text-right">{{add_commas Stat.payout}}</td>
+          <td class="text-left">{{Stat.currency}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
 
-    <div class="row">
-      <div class="col-sm-12">
-
-        <h1>Games</h1>
-        
-        <div id="hasoffers-game-offers" class="table-responsive">
-
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th class="text-center">Game</th>
-                <th class="text-center">Clicks</th>
-                <th class="text-center">Conversions</th>
-                <th class="text-center" colspan="2">Payout</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each Games}}
-              <tr>
-                <td class="text-center">{{Offer.name}}</td>
-                <td class="text-center">{{add_commas Stat.clicks}}</td>
-                <td class="text-center">{{add_commas Stat.conversions}}</td>
-                <td class="text-right">{{add_commas Stat.payout}}</td>
-                <td class="text-left">{{Stat.currency}}</td>
-              </tr>
-              {{/each}}
-            </tbody>
-          </table>
-
-        </div>
-      </div>
-
-    </div>
   </div>
-</div>
-  
 
-  
 </template>
