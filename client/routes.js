@@ -19,6 +19,6 @@ Router.map(function() {
   this.route('register')
   this.route('hasoffers');
   this.route('youtube');
-  
+  this.route('login');  
 });
 
