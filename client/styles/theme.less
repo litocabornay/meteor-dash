@@ -51,6 +51,7 @@ body {
   // Top Navigation
   #anytv-topnav{
     position: fixed;
+    z-index: 10000;
     background-color: #EEE;
 
     * {
@@ -73,14 +74,21 @@ body {
     }
   }
 
+  #anytv-userbar{
+
+    .menu{
+      float : right;
+    }
+  }
+
   // Contents
   #anytv-content{
-    padding-top:75px;
+    padding-top:50px;
 
     #signup{
 
       a {
-        height: 100px;
+        height: 90px;
         background-color: @signup-box-inner;
         text-align: center;
         .box-shadow(~"inset 0 0 30px 10px @{signup-box-outer}");

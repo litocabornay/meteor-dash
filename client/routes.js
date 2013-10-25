@@ -3,7 +3,24 @@ Router.configure({
   layout: 'layout',
   // Defaultly render sections to specified yields
   renderTemplates : {
-    navbar : {to: 'navbar'}
+    topnav : {to: 'topnav'},
+    userbar : {to: 'userbar'}
+  }
+});
+
+// Required login router
+ControllerRequiredLogin = RouteController.extend({
+  before : function(){
+    // Redirect to home when logged in
+    if (!Meteor.user()) Router.go('/login');
+  }
+});
+
+// Not visible to login
+ControlledInvisibleToLogin = RouteController.extend({
+  before : function(){
+    // Redirect to home when logged in
+    if (!!Meteor.user()) Router.go('/');
   }
 });
 
@@ -16,9 +33,18 @@ Router.map(function() {
     template: 'home'
   });
 
-  this.route('register')
   this.route('hasoffers');
-  this.route('youtube');
-  this.route('login');  
+  this.route('youtube');  
+
+  this.route('login',{
+    controller : ControlledInvisibleToLogin
+  });
+  this.route('register',{
+    controller : ControlledInvisibleToLogin
+  });
+  this.route('account',{
+    controller : ControllerRequiredLogin
+  });
+
 });
 
